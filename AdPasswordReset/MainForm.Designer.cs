@@ -66,9 +66,11 @@
             // 
             // tbPassword
             // 
+            this.tbPassword.BackColor = System.Drawing.SystemColors.Window;
             this.tbPassword.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPassword.Location = new System.Drawing.Point(12, 200);
             this.tbPassword.Name = "tbPassword";
+            this.tbPassword.ReadOnly = true;
             this.tbPassword.Size = new System.Drawing.Size(199, 26);
             this.tbPassword.TabIndex = 3;
             // 
