@@ -50,12 +50,15 @@ namespace AdPasswordReset
 
         private void UpdateDetails()
         {
+            SuspendLayout();
+
             tbUser.Text = "";
             tbPassword.Text = "";
 
             tbPassword.Enabled = _currentUser != null;
             btnGenerate.Enabled = _currentUser != null;
             btnSetPassword.Enabled = _currentUser != null;
+            btnUnlock.Enabled = _currentUser != null;
 
             if (_currentUser == null)
                 return;
@@ -63,12 +66,16 @@ namespace AdPasswordReset
             var passwordExpiry = ADHelpers.PasswordExpirationDate(_currentUser);
             var passwordExpired = passwordExpiry <= DateTime.UtcNow ? "YES" : "NO";
 
-            tbUser.Text = $@"{_currentUser.DisplayName}
+            var s = string.Format("{1}{0}{0}Login: {2}{0}{0}Password expiry: {3}{0}Password expired: {4}",
+                Environment.NewLine, _currentUser.DisplayName, _currentUser.UserPrincipalName, passwordExpiry, passwordExpired);
+            if (_currentUser.IsAccountLockedOut())
+                s += string.Format("{0}{0}ACCOUNT IS LOCKED", Environment.NewLine);
+            tbUser.Text = s;
 
-Login: {_currentUser.UserPrincipalName}
 
-Password expiry: {passwordExpiry}
-Password expired: {passwordExpired}";
+            btnUnlock.Enabled = _currentUser.IsAccountLockedOut();
+
+            ResumeLayout();
         }
 
         private void btnSetPassword_Click(object sender, EventArgs e)
@@ -89,16 +96,32 @@ Password expired: {passwordExpired}";
             }
             catch (Exception ex)
             {
-                if (ex.InnerException != null)
-                    MessageBox.Show(ex.InnerException.Message);
-                else
-                    MessageBox.Show("Access denied.");
+                MessageBox.Show("Access denied.");
             }
         }
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             tbPassword.Text = PasswordHelpers.Generate();
+        }
+
+        private void btnUnlock_Click(object sender, EventArgs e)
+        {
+            if (_currentUser == null)
+                return;
+
+            if (MessageBox.Show("Are you sure you want to unlock this user?", "Unlock user", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
+
+            try
+            {
+                _currentUser.UnlockAccount();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Access denied.");
+            }
+
         }
     }
 }

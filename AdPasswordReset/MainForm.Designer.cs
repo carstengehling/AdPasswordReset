@@ -34,6 +34,7 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.btnGenerate = new System.Windows.Forms.Button();
             this.btnSetPassword = new System.Windows.Forms.Button();
+            this.btnUnlock = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbUsers
@@ -47,7 +48,7 @@
             // 
             // tbUser
             // 
-            this.tbUser.BackColor = System.Drawing.SystemColors.Window;
+            this.tbUser.BackColor = System.Drawing.SystemColors.Control;
             this.tbUser.Location = new System.Drawing.Point(12, 12);
             this.tbUser.Multiline = true;
             this.tbUser.Name = "tbUser";
@@ -58,7 +59,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 184);
+            this.label1.Location = new System.Drawing.Point(9, 218);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 13);
             this.label1.TabIndex = 2;
@@ -66,9 +67,9 @@
             // 
             // tbPassword
             // 
-            this.tbPassword.BackColor = System.Drawing.SystemColors.Window;
+            this.tbPassword.BackColor = System.Drawing.SystemColors.Control;
             this.tbPassword.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPassword.Location = new System.Drawing.Point(12, 200);
+            this.tbPassword.Location = new System.Drawing.Point(12, 234);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.ReadOnly = true;
             this.tbPassword.Size = new System.Drawing.Size(199, 26);
@@ -76,7 +77,7 @@
             // 
             // btnGenerate
             // 
-            this.btnGenerate.Location = new System.Drawing.Point(217, 201);
+            this.btnGenerate.Location = new System.Drawing.Point(217, 235);
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(75, 23);
             this.btnGenerate.TabIndex = 4;
@@ -87,7 +88,7 @@
             // btnSetPassword
             // 
             this.btnSetPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSetPassword.Location = new System.Drawing.Point(12, 232);
+            this.btnSetPassword.Location = new System.Drawing.Point(12, 266);
             this.btnSetPassword.Name = "btnSetPassword";
             this.btnSetPassword.Size = new System.Drawing.Size(100, 23);
             this.btnSetPassword.TabIndex = 5;
@@ -95,11 +96,22 @@
             this.btnSetPassword.UseVisualStyleBackColor = true;
             this.btnSetPassword.Click += new System.EventHandler(this.btnSetPassword_Click);
             // 
+            // btnUnlock
+            // 
+            this.btnUnlock.Location = new System.Drawing.Point(12, 172);
+            this.btnUnlock.Name = "btnUnlock";
+            this.btnUnlock.Size = new System.Drawing.Size(74, 23);
+            this.btnUnlock.TabIndex = 6;
+            this.btnUnlock.Text = "Unlock user";
+            this.btnUnlock.UseVisualStyleBackColor = true;
+            this.btnUnlock.Click += new System.EventHandler(this.btnUnlock_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(554, 298);
+            this.Controls.Add(this.btnUnlock);
             this.Controls.Add(this.btnSetPassword);
             this.Controls.Add(this.btnGenerate);
             this.Controls.Add(this.tbPassword);
@@ -107,7 +119,7 @@
             this.Controls.Add(this.tbUser);
             this.Controls.Add(this.lbUsers);
             this.Name = "MainForm";
-            this.Text = "AD Password reset";
+            this.Text = "User Password Reset Tool";
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -122,6 +134,7 @@
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Button btnGenerate;
         private System.Windows.Forms.Button btnSetPassword;
+        private System.Windows.Forms.Button btnUnlock;
     }
 }
 
