@@ -16,7 +16,7 @@ Use the "Delegation of Control Wizard" in Active Directory.
 
 1. Create a group in AD (can be the same as above)
 2. For the OU in question:
-a) On the Tasks to Delegate dialog box, click Create a custom task to delegate, and then click Next.
-b) On the Active Directory Object Type dialog box, click Only the following objects in the folder:. In the list, click User objects (the last entry in the list), and then click Next.
-c) On the Permissions dialog box, click to clear the General check box, and then click to select the Property-specific check box. In the Permissions list, click to select the Read lockoutTime check box, click to select the Write lockoutTime check box, and then click Next.
-d) On the Completing the Delegation of Control Wizard dialog box, click Finish.
+  - On the Tasks to Delegate dialog box, click Create a custom task to delegate, and then click Next.
+  - On the Active Directory Object Type dialog box, click Only the following objects in the folder:. In the list, click User objects (the last entry in the list), and then click Next.
+  - On the Permissions dialog box, click to clear the General check box, and then click to select the Property-specific check box. In the Permissions list, click to select the Read lockoutTime check box, click to select the Write lockoutTime check box, and then click Next.
+  - On the Completing the Delegation of Control Wizard dialog box, click Finish.
